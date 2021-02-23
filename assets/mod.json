@@ -7,5 +7,6 @@
   "main": "sonnicon.modtemplate.ModTemplate",
   "minGameVersion": "105",
   "dependencies": [],
-  "hidden": false
+  "hidden": false,
+  "java": true
 }
