@@ -27,6 +27,7 @@ ext {
 task alphableed doFirst {
     exec {
         workingDir "$rootDir"
+        ignoreExitValue true
 
         println "Alpha-bleeding sprites..."
         if(isWindows()) {
