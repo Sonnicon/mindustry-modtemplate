@@ -28,7 +28,10 @@ task dexify(type: Jar) {
     final File jarArtifact = new File(tasks.jar.archiveFile.get().asFile.parent, pArtifactFilename),
                dexedArtifact = new File(tasks.dexify.getTemporaryDir(), "dexed.jar")
     doFirst {
-        def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
+        def androidHome = System.getenv("ANDROID_HOME")
+        def files = (configurations.compileClasspath.asList() +
+        configurations.runtimeClasspath.asList() +
+        [new File("${androidHome}/platforms/${sdkVersion === null ? "android-$sdkVersion" : new File(System.getenv("ANDROID_HOME")).listFiles()[0].getName()}/android.jar")])
         
         exec {
             workingDir dexedArtifact.parent
